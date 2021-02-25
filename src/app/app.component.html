@@ -1,0 +1,18 @@
+<p>home works!</p>
+<button (click)="getPosts()">fetch api</button>
+
+<button (click)="createPost()">Create Post</button>
+<button (click)="updatePost()">update Post</button>
+<button (click)="deletePost()">delete Post</button>
+
+{{ newPost | async | json }}
+
+<ul>
+  <li
+    *ngFor="let post of posts | async | paginate: { itemsPerPage: 10, currentPage: p }"
+  >
+    {{post | json}}
+  </li>
+</ul>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
